@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package tp6com1.vistas;
+package TP6.vistas;
 
 import java.util.TreeSet;
-import tp6com1.entidades.Producto;
+import TP6.Entidades.Producto;
 
 /**
  *

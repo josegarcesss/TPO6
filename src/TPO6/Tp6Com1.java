@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp6com1;
+package TPO6;
 
 import java.util.TreeSet;
-import tp6com1.entidades.Categoria;
-import tp6com1.entidades.Producto;
+import TP6.Entidades.Categoria;
+import TP6.Entidades.Producto;
 
 /**
  *
@@ -22,9 +22,9 @@ public class Tp6Com1 {
         // TODO code application logic here
         
         TreeSet<Producto> lista=new TreeSet<>();
-        Producto arroz=new Producto(12,"Arroz Gallo x 1kg",1300,10,new Categoria(1,"Comestible"));
-        Producto cafe=new Producto(5,"Cafe Cabrale",5000,20,new Categoria(1,"Comestible"));
-        Producto fideos=new Producto(12,"Fideos",3200,12,new Categoria(1,"Comestible"));
+        Producto arroz=new Producto(12,"Arroz Don Carlos",1300,10,new Categoria(1,"Comestible"));
+        Producto cafe=new Producto(5,"Cafe Nescafe",5000,20,new Categoria(1,"Comestible"));
+        Producto fideos=new Producto(123,"Fideos San Agustin",3200,12,new Categoria(1,"Comestible"));
         System.out.println(lista.add(arroz));
         System.out.println(lista.add(cafe));
         System.out.println(lista.add(fideos));

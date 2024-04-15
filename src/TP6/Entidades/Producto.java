@@ -1,5 +1,5 @@
 
-package tp6com1.entidades;
+package TP6.Entidades;
 
 
 public class Producto implements Comparable<Producto>{

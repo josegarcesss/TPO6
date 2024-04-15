@@ -191,7 +191,19 @@ private TreeSet<Producto> productos;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+        int cod;
+        try{
+        cod=Integer.parseInt(jtCodigo.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "El codigo es un Numero entero!");
+            return;
+        }        
+        for(Producto prod:productos){           
+            if(prod.getCodigo()==cod){
+                productos.remove(prod);
+                JOptionPane.showMessageDialog(this, "Eliminado con éxito!");
+            }
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jcProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcProductoActionPerformed

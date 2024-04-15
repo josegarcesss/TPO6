@@ -23,6 +23,17 @@ private TreeSet<Producto> productos;
         initComponents();
         this.productos=productos;
         llenarCombo();
+        elementosPrueba();
+    }
+    
+    private void elementosPrueba(){
+        Categoria categoria=(Categoria)jcProducto.getSelectedItem();
+        Producto prodAGuardar1=new Producto(1,"Limp1",1200,9,categoria);
+        productos.add(prodAGuardar1);
+        Producto prodAGuardar2=new Producto(2,"Limp2",1200,9,categoria);
+        productos.add(prodAGuardar2);
+        Producto prodAGuardar3=new Producto(3,"Limp3",1200,9,categoria);
+        productos.add(prodAGuardar3);
     }
 
     /**

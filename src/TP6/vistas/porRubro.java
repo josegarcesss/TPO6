@@ -4,8 +4,10 @@
  */
 package TP6.vistas;
 
+import TP6.Entidades.Categoria;
 import TP6.Entidades.Producto;
 import java.util.TreeSet;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,15 +15,46 @@ import java.util.TreeSet;
  */
 public class porRubro extends javax.swing.JInternalFrame {
 private TreeSet<Producto> productos;
+private DefaultTableModel modelo= new DefaultTableModel(){ 
+    public boolean isCellEditable(int f,int c){
+        return false;
+        }
+    };
     /**
      * Creates new form porRubro
      */
     public porRubro(TreeSet<Producto> productos) {
         initComponents();
         this.productos=productos;
+        llenarCombo();
+        armarCabecera();
+    }
+    
+    private void armarCabecera(){
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Precio");
+        jtRubro.setModel(modelo);
+    }
+    
+    private void llenarCombo(){    
+        Categoria limpieza=new Categoria(1,"Limpieza");
+        Categoria comestible=new Categoria(2,"Comestible");
+        Categoria perfumeria=new Categoria(3,"Perfumeria");
         
+        jcRubro.addItem(limpieza);
+        jcRubro.addItem(comestible);
+        jcRubro.addItem(perfumeria);        
+    }
+    
+    private void borrarFilas(){
+        int filas=jtRubro.getRowCount()-1;        
+        for (int f = filas; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,21 +64,85 @@ private TreeSet<Producto> productos;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jcRubro = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtRubro = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        jcRubro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcRubroItemStateChanged(evt);
+            }
+        });
+
+        jtRubro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Descripcion", "Precio", "Stock"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtRubro);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Listado de Productos por Rubro");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 64, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(61, 61, 61))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jcRubro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jcRubro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jcRubroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcRubroItemStateChanged
+        // TODO add your handling code here:
+        borrarFilas();
+        Categoria categoria=(Categoria)jcRubro.getSelectedItem();
+        for(Producto p:productos){
+            if(categoria.getCodigo() == p.getCategoria().getCodigo()){
+        modelo.addRow(new Object[]{p.getCodigo(),p.getDescripcion(),p.getPrecio(),p.getStock()});
+            }
+        }
+    }//GEN-LAST:event_jcRubroItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<Categoria> jcRubro;
+    private javax.swing.JTable jtRubro;
     // End of variables declaration//GEN-END:variables
 }

@@ -74,6 +74,11 @@ private TreeSet<Producto> productos=new TreeSet<>();
         jMenu2.add(jMenuItem3);
 
         jMenuItem2.setText("Por nombre");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem4.setText("Por precio");
@@ -118,6 +123,15 @@ private TreeSet<Producto> productos=new TreeSet<>();
         escritorio.moveToFront(xRubro);
                                     
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        porNombre xNombre=new porNombre(productos);
+        xNombre.setVisible(true);
+        escritorio.add(xNombre);
+        escritorio.moveToFront(xNombre);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

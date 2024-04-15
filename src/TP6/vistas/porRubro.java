@@ -31,8 +31,8 @@ private DefaultTableModel modelo= new DefaultTableModel(){
     }
     
     private void armarCabecera(){
+        modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Categoria");
         modelo.addColumn("Precio");
         jtRubro.setModel(modelo);
     }

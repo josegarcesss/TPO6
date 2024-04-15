@@ -34,6 +34,7 @@ private DefaultTableModel modelo= new DefaultTableModel(){
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
         jtRubro.setModel(modelo);
     }
     

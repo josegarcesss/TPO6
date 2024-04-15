@@ -28,6 +28,7 @@ private TreeSet<Producto> productos;
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Precio");
+        modelo.addColumn("Stock");
         jtNombre.setModel(modelo);
         }
     
@@ -109,7 +110,7 @@ private TreeSet<Producto> productos;
         borrarFilas();
         String producto=jtProductoaBuscar.getText();
         for(Producto p:productos){
-            if(p.getDescripcion().startsWith(producto)){
+            if(p.getDescripcion().toLowerCase().startsWith(producto.toLowerCase())){
             modelo.addRow(new Object[]{p.getCodigo(),p.getDescripcion(),p.getPrecio(),p.getStock()});
             }
         }

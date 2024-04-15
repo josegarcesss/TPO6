@@ -254,6 +254,7 @@ private TreeSet<Producto> productos;
             jtPrecio.requestFocus();
             return;
         }
+          
         try{
         
             stock=Integer.parseInt(jtStock.getText());
@@ -265,6 +266,7 @@ private TreeSet<Producto> productos;
             jtStock.requestFocus();
             return;
         }
+       
         
         String descripcion=jtDescripcion.getText();
         Categoria categoria=(Categoria)jcProducto.getSelectedItem();
